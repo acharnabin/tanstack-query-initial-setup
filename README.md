@@ -1,54 +1,77 @@
-# React + TypeScript + Vite
+# Tantack Example: React + TypeScript + Vite + TanStack Query
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a demonstration of a modern React application using TypeScript, Vite, TanStack React Query, and Axios. It fetches and displays user data from the [Fake Store API](https://fakestoreapi.com), allows simulating user login, and includes retry logic for data fetching.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **User List:** Fetches and displays a list of users from the Fake Store API.
+- **Login Simulation:** Each user row has a "Login" button that simulates a login request.
+- **Retry Logic:** A "Retry" button allows you to refetch the user data.
+- **React Query:** Uses TanStack React Query for efficient data fetching and caching.
+- **React Query Devtools:** Integrated for easy debugging of queries and mutations.
+- **Custom Styling:** Clean, modern UI with a styled user table.
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Prerequisites
+- [Node.js](https://nodejs.org/) (v18 or higher recommended)
+- [npm](https://www.npmjs.com/) (comes with Node.js)
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### Installation
+
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Running the App
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Start the development server:
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```bash
+npm run dev
 ```
+
+Open [http://localhost:5173](http://localhost:5173) in your browser to view the app.
+
+### Building for Production
+
+```bash
+npm run build
+```
+
+Preview the production build:
+
+```bash
+npm run preview
+```
+
+### Linting
+
+```bash
+npm run lint
+```
+
+## Project Structure
+
+- `src/App.tsx` - Main application component, user table, login, and retry logic.
+- `src/hooks/react-query/useUser.tsx` - Custom React Query hook for fetching users.
+- `src/api/axios-instance.ts` - Axios instance configured for Fake Store API.
+- `src/main.tsx` - App entry point, sets up React Query provider and devtools.
+- `src/App.css` - Custom styles for the app.
+
+## Configuration
+
+- **TypeScript:** Strict settings, modern target, JSX support.
+- **ESLint:** Recommended rules, React hooks, and refresh plugins.
+- **Vite:** Minimal config with React plugin.
+
+## API Reference
+
+- **Base URL:** `https://fakestoreapi.com`
+- **Endpoints Used:**
+  - `GET /users` - Fetches all users
+  - `POST /auth/login` - Simulates user login
+
+## License
+
+This project is for demonstration and educational purposes.
